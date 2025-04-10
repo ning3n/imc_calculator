@@ -34,9 +34,9 @@ class _NumberSelectorState extends State<NumberSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              FloatingActionButton(onPressed: (){widget.onDecrement();}, shape: CircleBorder(), backgroundColor: AppColors.primary, child: Icon(Icons.remove, color: Colors.white,),),
+              FloatingActionButton(heroTag: null, onPressed: (){widget.onDecrement();}, shape: CircleBorder(), backgroundColor: AppColors.primary, child: Icon(Icons.remove, color: Colors.white,),),
               SizedBox(width: 16,),
-              FloatingActionButton(onPressed: (){widget.onIncrement();}, shape: CircleBorder(), backgroundColor: AppColors.primary, child: Icon(Icons.add, color: Colors.white,)),
+              FloatingActionButton(heroTag: null, onPressed: (){widget.onIncrement();}, shape: CircleBorder(), backgroundColor: AppColors.primary, child: Icon(Icons.add, color: Colors.white,)),
             ],)
           ],
         ),

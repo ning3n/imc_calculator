@@ -3,14 +3,15 @@ import 'package:imc_calculator/core/app_colors.dart';
 import 'package:imc_calculator/core/app_styles.dart';
 
 class HeightSelector extends StatefulWidget {
-  const HeightSelector({super.key});
+  final double selectedHeight;
+  final Function(double) onHeightChange;
+  const HeightSelector({super.key, required this.selectedHeight, required this.onHeightChange});
 
   @override
   State<HeightSelector> createState() => HeightSelectorState();
 }
 
 class HeightSelectorState extends State<HeightSelector> {
-  double height = 170; // Altura inicial
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +28,16 @@ class HeightSelectorState extends State<HeightSelector> {
               padding: const EdgeInsets.only(top:8.0),
               child: Text("ALTURA", style: TextStyles.bodyText),
             ),
-            Text("${height.toStringAsFixed(0)} cm", style: TextStyle(
+            Text("${widget.selectedHeight.toStringAsFixed(0)} cm", style: TextStyle(
               color: Colors.white, fontSize: 38, fontWeight: FontWeight.bold
             )),
-            Slider(value: height, onChanged: (newHeight){
-              setState(() {
-                height = newHeight;  
-              });
+            Slider(value: widget.selectedHeight, onChanged: (newHeight){
+              widget.onHeightChange(newHeight);
             }, 
             min: 150, 
             max: 220,
             divisions: 70,
-            label: "${height.toStringAsFixed(0)} cm",
+            label: "${widget.selectedHeight.toStringAsFixed(0)} cm",
             activeColor: AppColors.primary,
             )
           ],
